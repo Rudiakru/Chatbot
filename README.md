@@ -1,3 +1,7 @@
+The Chatbot tries to ask the user about their personality using the OCEAN personality metrics model and 
+then recommends a university degree program based on their input.
+Works only with the older versions of PyAiml and Python.
+
 PyAiml2
 ===
 ***v0.8.7***
