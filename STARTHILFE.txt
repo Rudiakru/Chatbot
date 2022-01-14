@@ -1,0 +1,14 @@
+1. Installiere Python 3.5.2
+2. Kommandozeile(cmd) öffnen und "pip install numpy" eingeben
+
+Möglichkeit 1, Dialog in Kommandozeile führen:
+  
+  3. Kommandozeile in diesen Ordner navigieren
+  4. "python test.py" eingeben
+
+Möglichkeit 2, Dialog im Browser führen:
+
+  3. In Kommandozeile "pip install flask" eingeben
+  4. Kommandozeile in diesen Ordner navigieren
+  5. "python server.py" eingeben. (Hier wird eine Adresse ausgegeben, wahrscheinlich 127.0.0.1:5000)
+  6. Browser öffnen und die in der Kommandozeile angegebene Adresse eingeben.

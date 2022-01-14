@@ -1,0 +1,2164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0">
+
+
+<meta name="author" content="ElHodor"/>
+<meta name="language" content="de"/>
+
+<category>
+<pattern>TEST</pattern>
+<template>
+  <random>
+  <li><srai>F1</srai></li>
+  <li><srai>F2</srai></li>
+  <li><srai>F3</srai></li>
+  <li><srai>F4</srai></li>
+  <li><srai>F5</srai></li>
+  <li><srai>F6</srai></li>
+  <li><srai>F7</srai></li>
+  <li><srai>F8</srai></li>
+  <li><srai>F9</srai></li>
+  <li><srai>F10</srai></li>
+  <li><srai>F11</srai></li>
+  <li><srai>F12</srai></li>
+  <li><srai>F13</srai></li>
+  <li><srai>F14</srai></li>
+  <li><srai>F15</srai></li>
+  </random>
+</template>
+</category> 
+
+<category>
+<pattern>START</pattern>
+<template>
+  Einen schönen guten <get name="tageszeit"/>! Ich heiße Studbot und werde versuchen dir dabei zu helfen, eine passende Studienrichtung für dich zu finden.  Du weisst schon wie ich heisse, wie lautet dein Name?
+  <think><set name="topic">VORSTELLEN</set></think>
+</template>
+</category> 
+
+
+<topic name="VORSTELLEN">
+
+<category>
+<pattern>MEIN NAME IST *</pattern>
+<template>
+  <think><set name="username"> <star/> </set></think>
+  <srai>NAMEEINGEGEBEN</srai>
+</template>
+</category> 
+
+<category>
+<pattern>ICH HEISSE *</pattern>
+<template>
+  <think><set name="username"> <star/> </set></think>
+  <srai>NAMEEINGEGEBEN</srai>
+</template>
+</category> 
+
+<category>
+<pattern>MAN NENNT MICH *</pattern>
+<template>
+  <think><set name="username"> <star/> </set></think>
+  <srai>NAMEEINGEGEBEN</srai>
+</template>
+</category> 
+
+<category>
+<pattern>* BIN *</pattern>
+<template>
+  <think><set name="username"> <star index="2"/> </set></think>
+  <srai>NAMEEINGEGEBEN</srai>
+</template>
+</category> 
+
+<category>
+<pattern>* HEISSE *</pattern>
+<template>
+  <think><set name="username"> <star index="2"/> </set></think>
+  <srai>NAMEEINGEGEBEN</srai>
+</template>
+</category> 
+
+<category>
+<pattern>* NENNT *</pattern>
+<template>
+  <think><set name="username"> <star index="2"/> </set></think>
+  <srai>NAMEEINGEGEBEN</srai>
+</template>
+</category> 
+
+<category>
+<pattern>*</pattern>
+<template>
+  <think><set name="username"> <star/> </set></think>
+  <srai>NAMEEINGEGEBEN</srai>
+</template>
+</category> 
+
+<category>
+<pattern>NAMEEINGEGEBEN</pattern>
+<template>
+  Hallo <get name="username"/>, freut mich dich kennenzulernen.
+  <srai>TAGESFORMEL<get name="tageszeit"/></srai>
+  Was machst du gerade?
+  <think><set name="topic">SMALLTALK</set></think>
+</template>
+</category> 
+
+</topic>
+
+<topic name="SMALLTALK">
+
+<category>
+<pattern>*</pattern>
+<template>
+  Ah, ich verstehe. Na dann lass uns mit ein paar Fragen anfangen, mit denen ich dich besser kennenlerne und dir somit zu einer Studienrichtung raten kann.
+  <srai>F1</srai>
+</template>
+</category> 
+</topic>
+
+
+<category>
+<pattern>TAGESFORMELMORGEN</pattern>
+<template>
+  Du bist heute schon früh auf.
+</template>
+</category> 
+
+<category>
+<pattern>TAGESFORMELTAG</pattern>
+<template>
+  Wir haben gerade Nachmittag.
+</template>
+</category> 
+
+<category>
+<pattern>TAGESFORMELABEND</pattern>
+<template>
+  Es ist schon spät.
+</template>
+</category> 
+
+
+
+
+<category>
+<pattern>RESULT</pattern>
+<template>
+  <get name="result"/>
+</template>
+</category> 
+
+<category>
+<pattern>F1</pattern>
+<template>
+Bist du ein neugieriger Mensch?
+<think><set name="topic">F1</set></think>
+</template>
+</category> 
+ 
+<topic name = "F1">
+  
+  
+  
+  <category>
+  <pattern>JA</pattern>
+  <template>
+  <think><set name="openness">1</set></think>
+  Cool. Ich auch.
+  <srai>F2</srai>
+  </template>
+  </category> 
+   
+  <category>
+  <pattern>NEIN</pattern>
+  <template>
+  <think><set name="">1</set></think>
+  Schade. Ich finde eigentlich alles spannend.
+  <srai>F2</srai>
+  </template>
+  </category> 
+</topic>
+
+<!--Frage 2 -->
+<category>
+<pattern>F2</pattern>
+<template>
+  Hast du viele Ideen und viel Fantasie oder eher weniger im Vergleich zu anderen?
+<think><set name="topic">F2</set></think>
+</template>
+</category>
+
+<topic name = "F2">
+  <category>
+  <pattern>ICH DENKE SCHON</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+
+  <category>
+  <pattern>* VIEL *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+
+  <category>
+  <pattern>* MEHR *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+
+  <category>
+  <pattern>EHER WENIGER</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+
+  <category>
+  <pattern>* WENIG *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+
+  <category>
+  <pattern>* WENIGER *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+
+  <category>
+  <pattern>JA</pattern>
+  <think><set name="openness">1</set></think>
+  <template>
+    Schön. Du bist also kreativ.
+    <srai>F3</srai>
+  </template>
+  </category>
+
+  <category>
+  <pattern>NEIN</pattern>
+  <template>
+    Ohne Fantasie ist das Leben schlecht.
+    <srai>F3</srai>
+  </template>
+  </category>
+</topic>
+
+<!--Frage 3 -->
+<category>
+<pattern>F3</pattern>
+<template>
+Lernst du immer wieder gerne neue Dinge?
+<think><set name="topic">F3</set></think>
+</template>
+</category> 
+
+<topic name = "F3">
+<category>
+  <pattern>JA</pattern>
+  <template>
+  Was hast du letztens Neues gelernt?
+  <think><set name="openness">1</set></think>
+  <think><set name="topic">SMALLTALKF3</set></think>
+   </template>
+  </category>
+
+  <category>
+  <pattern>*</pattern>
+  <template>
+    Aha, <get name = "username"/>. Sehr interessant.
+    <srai>F4</srai>
+  </template>
+  </category> 
+
+  <category>
+  <pattern>NEIN</pattern>
+   <template>
+      <srai>F4</srai>
+   </template>
+  </category>
+</topic>
+
+<topic name = "SMALLTALKF3">
+  <category>
+    <pattern>*</pattern>
+    <template>
+      Oh, das hab ich aber nicht von dir erwartet.
+      <srai>F4</srai>
+    </template>
+  </category>
+</topic>
+
+<!--Frage 4 -->
+
+<category>
+<pattern>F4</pattern>
+<template>
+Was ist mit Pflichtbewusstsein. Bist du sehr pflichtbewusst?
+<think><set name="topic">F4</set></think>
+</template>
+</category> 
+
+<topic name = "F4">
+  <category>
+  <pattern>ICH DENKE SCHON</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+
+  <category>
+  <pattern>* NICHT *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>  
+  
+  <category>
+  <pattern>* WENIGER *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>      
+  
+  <category>
+  <pattern>JA</pattern>
+  <template>
+  <think><set name="conscientiousness">1</set></think>
+      <srai>F5</srai>
+   </template>
+  </category>
+
+  <category>
+  <pattern>NEIN</pattern>
+   <template>
+      <srai>F5</srai>
+   </template>
+  </category>
+</topic>
+
+
+<!--Frage 5 -->
+<category>
+<pattern>F5</pattern>
+<template>
+Wie ordentlich erledigst du deine Aufgaben immer?
+<think><set name="topic">F5</set></think>
+</template>
+</category> 
+
+<topic name = "F5">
+  <category>
+  <pattern>ORDENTLICH</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+
+  <category>
+  <pattern>* EHER ORDENTLICH</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+
+  <category>
+  <pattern>* EHER ORDENTLICH *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>EHER ORDENTLICH *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* SEHR ORDENTLICH</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+
+  <category>
+  <pattern>* SEHR ORDENTLICH *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+
+  <category>
+  <pattern>* SEHR ORDENTLICH *</pattern>
+  <template><srai>JA</srai></template>
+  </category>   
+
+  <category>
+  <pattern>* NICHT *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>   
+
+  <category>
+  <pattern>* UNORDENTLICH</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* UNORDENTLICH *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category> 
+  
+  <category>
+  <pattern>UNORDENTLICH *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+
+  <category>
+  <pattern>UNORDENTLICH</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+<category>
+<pattern>JA</pattern>
+<template>
+<think><set name="conscientiousness">1</set></think>
+    <srai>F6</srai>
+ </template>
+</category>
+
+
+  <category>
+  <pattern>NEIN</pattern>
+   <template>
+      <srai>F6</srai>
+   </template>
+  </category>
+</topic>
+
+<!--Frage 6 -->
+<category>
+<pattern>F6</pattern>
+<template>
+Achtest du sehr darauf, ob Regeln eingehalten werden?
+<think><set name="topic">F6</set></think>
+</template>
+</category> 
+
+<topic name = "F6">
+
+  <category>
+  <pattern>JA</pattern>
+  <template>
+  <think><set name="conscientiousness">1</set></think>
+      <srai>F7</srai>
+   </template>
+  </category>
+
+  <category>
+  <pattern>NEIN</pattern>
+   <template>
+      <srai>F7</srai>
+   </template>
+  </category>
+</topic>
+
+<!--Frage 7 -->
+<category>
+<pattern>F7</pattern>
+<template>
+Bist du gern mit anderen Menschen zusammen?
+<think><set name="topic">F7</set></think>
+</template>
+</category> 
+
+<topic name = "F7">
+  
+
+  <category>
+  <pattern>JA</pattern>
+  <template>
+  <think><set name="extraversion">1</set></think>
+      <srai>F8</srai>
+   </template>
+  </category>
+
+  <category>
+  <pattern>NEIN</pattern>
+   <template>
+      <srai>F8</srai>
+   </template>
+  </category>
+</topic>
+
+
+<!-- !!!Hier nicht sicher -->
+<!--Frage 8 -->
+<category>
+<pattern>F8</pattern>
+<template>
+Bist du sehr unternehmungslustig oder eher ein Stubenhocker??
+<think><set name="topic">F8</set></think>
+</template>
+</category> 
+
+<topic name = "F8">
+  <category>
+  <pattern>UNTERNEHMUNGSLUSTIG</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern> * UNTERNEHMUNGSLUSTIG</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>UNTERNEHMUNGSLUSTIG *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern> * UNTERNEHMUNGSLUSTIG *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>HAUSE</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* HAUSE</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>HAUSE *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern> * HAUSE *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>  
+
+  <category>
+  <pattern>STUBENHOCKER</pattern>
+  <template><srai>NEIN</srai></template>
+  </category> 
+  
+  <category>
+  <pattern>* STUBENHOCKER</pattern>
+  <template><srai>NEIN</srai></template>
+  </category> 
+  
+  <category>
+  <pattern>STUBENHOCKER *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category> 
+  
+  <category>
+  <pattern>* STUBENHOCKER *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category> 
+  
+  
+  <category>
+  <pattern> * STUBENHOCKER *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>  
+
+  <category>
+  <pattern>JA</pattern>
+  <template>
+  Was machst du denn gerne?
+  <think><set name="extraversion">1</set></think>
+  <think><set name="topic">SMALLTALKF8</set></think>
+   </template>
+  </category>
+
+  <category>
+  <pattern>NEIN</pattern>
+   <template>
+   Was machst du dann am Tag?
+  <think><set name="topic">SMALLTALKF8</set></think>
+   </template>
+  </category>
+
+</topic>
+
+<topic name = "SMALLTALKF8">
+  <category>
+  <pattern>*</pattern>
+   <template>
+   Ich kann das leider nicht, ich bin nur ein Bot.
+      <srai>F9</srai>
+   </template>
+  </category>
+</topic>
+
+<!--Frage 9 -->
+<category>
+<pattern>F9</pattern>
+<template>
+Würdest du dich als gesprächigen und kommunikativen Menschen bezeichnen?
+<think><set name="topic">F9</set></think>
+</template>
+</category> 
+
+<topic name = "F9">
+  <category>
+  <pattern>* JA *</pattern>
+  <template><srai>JA</srai></template>
+  </category>  
+
+  <category>
+  <pattern>* SCHON *</pattern>
+  <template><srai>JA</srai></template>
+  </category>    
+  
+  <category>
+  <pattern>* NICHT *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>   
+
+  <category>
+  <pattern>KOMMUNIKATIV</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>   
+
+  <category>
+  <pattern>GESPRÄCHIG</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>   
+
+  <category>
+  <pattern>* GESPRÄCHIG</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>   
+
+  <category>
+  <pattern>GESPRÄCHIG *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>   
+
+  <category>
+  <pattern>* GESPRÄCHIG *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>   
+
+  <category>
+  <pattern>* KOMMUNIKATIV</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>   
+
+  <category>
+  <pattern>* KOMMUNIKATIV *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>   
+   
+  <category>
+  <pattern>JA</pattern>
+  <template>
+  Das merkt man, ich rede auch sehr gerne, denn ich kann sonst nichts andereres.
+  <think><set name="extraversion">1</set></think>
+      <srai>F10</srai>
+   </template>
+  </category>
+
+  <category>
+  <pattern>NEIN</pattern>
+   <template>
+   Wirklich nicht? Das merkt man nicht.
+      <srai>F10</srai>
+   </template>
+  </category>
+</topic>
+
+<!--Frage 10 -->
+<category>
+<pattern>F10</pattern>
+<template>
+Inwieweit bist du ein höflicher Mensch?
+<think><set name="topic">F10</set></think>
+</template>
+</category> 
+
+<topic name = "F10">
+  <category>
+  <pattern>* SEHR *</pattern>
+  <template><srai>JA</srai></template>
+  </category> 
+
+  <category>
+  <pattern>* HÖFLICHER *</pattern>
+  <template><srai>JA</srai></template>
+  </category>   
+
+  <category>
+  <pattern>* HÖFLICH *</pattern>
+  <template><srai>JA</srai></template>
+  </category>   
+
+  <category>
+  <pattern>* HÖFLICH</pattern>
+  <template><srai>JA</srai></template>
+  </category>   
+
+  <category>
+  <pattern>HÖFLICH *</pattern>
+  <template><srai>JA</srai></template>
+  </category>   
+
+  <category>
+  <pattern>NICHT * HÖFLICH *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>   
+
+  <category>
+  <pattern>NICHT * HÖFLICH</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>   
+
+  <category>
+  <pattern>* NICHT * HÖFLICH</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>   
+
+  <category>
+  <pattern>* NICHT HÖFLICH</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>   
+
+  <category>
+  <pattern>NICHT HÖFLICH</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>   
+
+  <category>
+  <pattern>* NICHT *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>   
+ 
+  <category>
+  <pattern>* KEIN *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category> 
+   
+  <category>
+  <pattern>JA</pattern>
+  <template>
+  Höflichkeit: Die angenehmste Form der Heuchelei.
+  <think><set name="agreeableness">1</set></think>
+      <srai>F11</srai>
+   </template>
+  </category>
+
+  <category>
+  <pattern>NEIN</pattern>
+   <template>
+   Sehr gut! Ich würde gerne Menschen beschimpfen, aber leider wurde ich so nicht programmiert.
+      <srai>F11</srai>
+   </template>
+  </category>
+</topic>
+
+<!--Frage 11 -->
+<category>
+<pattern>F11</pattern>
+<template>
+Wie gut kommst du mit Menschen zurecht, wenn sie anderer Meinung sind?
+<think><set name="topic">F11</set></think>
+</template>
+</category> 
+
+<topic name = "F11">
+  <category>
+  <pattern> * WENIG *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category> 
+ 
+  <category>
+  <pattern> * WENIGER *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+
+  <category>
+  <pattern> * NICHT *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>   
+
+  <category>
+  <pattern>JA</pattern>
+  <template>
+  <think><set name="agreeableness">1</set></think>
+      <srai>F12</srai>
+   </template>
+  </category>
+
+  <category>
+  <pattern>NEIN</pattern>
+   <template>
+      <srai>F12</srai>
+   </template>
+  </category>
+</topic>
+
+<!--Frage 12 -->
+<category>
+<pattern>F12</pattern>
+<template>
+Achtest du darauf immer freundlich zu sein?
+<think><set name="topic">F12</set></think>
+</template>
+</category> 
+
+<topic name = "F12">
+  <category>
+  <pattern> * NICHT </pattern>
+  <template><srai>NEIN</srai></template>
+  </category> 
+
+  <category>
+  <pattern>JA</pattern>
+  <template>
+  <think><set name="agreeableness">1</set></think>
+      <srai>F13</srai>
+   </template>
+  </category>
+
+  <category>
+  <pattern>NEIN</pattern>
+   <template>
+      <srai>F13</srai>
+   </template>
+  </category>
+</topic>
+
+
+<!--Frage 13 -->
+<category>
+<pattern>F13</pattern>
+<template>
+  In Ordnung, <get name = "username"/>. Da wir ja gerade über einen möglichen Studiengang reden, grübelst du sonst viel über deine Zukunft nach?
+<think><set name="topic">F13</set></think>
+</template>
+</category> 
+
+<topic name = "F13">
+  <category>
+  <pattern>* SCHON *</pattern>
+  <template><srai>JA</srai></template>
+  </category>  
+
+  <category>
+  <pattern> * WENIG *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+
+  <category>
+  <pattern>* WENIGER *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+
+  <category>
+  <pattern>* NICHT *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>  
+
+  <category>
+  <pattern>JA</pattern>
+  <template>
+  Sehr gut, dann hoffe ich, dass  ich dir nach den ganzen Fragen zumindest beim Studiengang helfen kann.
+  <think><set name="neuroticism">1</set></think>
+      <srai>F14</srai>
+   </template>
+  </category>
+
+  <category>
+  <pattern>NEIN</pattern>
+   <template>
+   Und trotzdem machen wir uns gerade Gedanken über deinen Studiengang.
+      <srai>F14</srai>
+   </template>
+  </category>
+</topic>
+
+<!--Frage 14 -->
+<category>
+<pattern>F14</pattern>
+<template>
+Bist du oft von deinen Gefühlen hin und her gerissen?
+<think><set name="topic">F14</set></think>
+</template>
+</category> 
+
+<topic name = "F14">
+  <category>
+  <pattern>JA</pattern>
+  <template>
+  <think><set name="neuroticism">1</set></think>
+      <srai>F15</srai>
+   </template>
+  </category>
+
+  <category>
+  <pattern>NEIN</pattern>
+   <template>
+      <srai>F15</srai>
+   </template>
+  </category>
+</topic>
+
+
+<!--!! Hier muss der Nutzer noch bei ja, seine antwort auf die frage abgeben koennen. Der Chatbot antwortet dann: Uhh, verstehe. Viele Menschen haben vor xxx Angst. -->
+<!--Frage 15 -->
+<category>
+<pattern>F15</pattern>
+<template>
+Bist du ein ängstlicher Typ?
+<think><set name="topic">F15</set></think>
+</template>
+</category> 
+
+<topic name = "F15">
+  <category>
+  <pattern>JA</pattern>
+  <template>
+  Wovor hast du denn am meisten Angst?
+  <think><set name="neuroticism">1</set></think>
+  <think><set name="topic">F15ANGST</set></think>
+   </template>
+  </category>
+
+  <category>
+  <pattern>NEIN</pattern>
+   <template>
+   Ich eher auch nicht. Aber ich hab Angst, dass mir jemand irgendwann den Strom abschaltet.
+   <srai>ENDE</srai>
+   </template>
+  </category>
+</topic>
+
+<topic name = "F15ANGST">
+
+  <category>
+  <pattern>* SIND *</pattern>
+  <template>
+    <think><set name = "ANGST"><star index="1"/></set></think>
+    <srai>DINGGENNANT</srai>
+  </template>
+  </category>
+
+  <category>
+  <pattern>* FINDE *</pattern>
+  <template>
+    <think><set name = "ANGST"><star index="1"/></set></think>
+    <srai>DINGGENNANT</srai>
+  </template>
+  </category>
+
+  <category>
+  <pattern>* HASSE *</pattern>
+  <template>
+    <think><set name = "ANGST"><star index="2"/></set></think>
+    <srai>DINGGENNANT</srai>
+  </template>
+  </category>
+
+  <category>
+  <pattern>VOR *</pattern>
+
+  <template>
+    <think><set name = "ANGST"><star index="1"/></set></think>
+    <srai>DINGGENNANT</srai>
+  </template>
+  </category>
+
+  <category>
+  <pattern>*</pattern>
+  <template>
+    Oh ja, die sind schlimm!
+    <srai>ENDE</srai>
+  </template>
+  </category>
+
+  <category>
+  <pattern>DINGGENNANT</pattern>
+  <template>
+    Wow. Vor <get name = "ANGST"/> habe ich auch Angst.
+    <srai>ENDE</srai>
+  </template>
+  </category>
+
+</topic>
+
+<!-- ENDE -->
+
+
+<category>
+<pattern>ENDE</pattern>
+<template>
+  Ok. Das wars. Ich find dich echt spannend.
+  Was hälst du davon <srai>RESULT</srai> zu studieren?
+  <think><set name="topic">ENDE</set></think>
+</template>
+</category>
+
+<topic name = "ENDE">
+
+
+<category>
+<pattern>* JA *</pattern>
+<template>
+  <srai>JA</srai> 
+</template>
+</category>
+
+<category>
+<pattern>* OK *</pattern>
+<template>
+  <srai>JA</srai> 
+</template>
+</category>
+
+<category>
+<pattern>OK *</pattern>
+<template>
+  <srai>JA</srai> 
+</template>
+</category>
+
+<category>
+<pattern>OK</pattern>
+<template>
+  <srai>JA</srai> 
+</template>
+</category>
+
+<category>
+<pattern>* OK</pattern>
+<template>
+  <srai>JA</srai> 
+</template>
+</category>
+
+
+<category>
+<pattern>* GEFÄLLT *</pattern>
+<template>
+  <srai>JA</srai> 
+</template>
+</category>
+
+<category>
+<pattern>GEFÄLLT *</pattern>
+<template>
+  <srai>JA</srai> 
+</template>
+</category>
+
+
+<category>
+<pattern>* GUT</pattern>
+<template>
+  <srai>JA</srai> 
+</template>
+</category>
+
+
+<category>
+<pattern>* GUT *</pattern>
+<template>
+  <srai>JA</srai> 
+</template>
+</category>
+
+<category>
+<pattern>GUT *</pattern>
+<template>
+  <srai>JA</srai> 
+</template>
+</category>
+
+<category>
+<pattern>* ZUFRIEDEN</pattern>
+<template>
+  <srai>JA</srai> 
+</template>
+</category>
+
+<category>
+<pattern>SCHLECHT *</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+<category>
+<pattern>* SCHLECHT</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+
+<category>
+<pattern>SCHLECHT</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+<category>
+<pattern>* SCHLECHT *</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+<category>
+<pattern>SCHRECKLICH *</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+<category>
+<pattern>* SCHRECKLICH</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+<category>
+<pattern>DOOF</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+<category>
+<pattern>* AKZEPTABEL</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+
+<category>
+<pattern>VIELLEICHT</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+
+<category>
+<pattern>GEHT SO</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+
+<category>
+<pattern>NAJA</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+
+<category>
+<pattern>* DOOF</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+
+<category>
+<pattern>* DOOF *</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+
+<category>
+<pattern>* NICHTS *</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+
+<category>
+<pattern>NICHTS *</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+
+<category>
+<pattern>NICHTS</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+
+<category>
+<pattern>KOMISCH</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+
+<category>
+<pattern>BLÖD</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+
+<category>
+<pattern>SCHRECKLICH</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+<category>
+<pattern>* SCHRECKLICH *</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+<category>
+<pattern>* ANDERES* </pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+<category>
+<pattern>* BITTE * </pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+<category>
+<pattern>BITTE *</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+<category>
+<pattern>WARUM *</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+<category>
+<pattern>* NICHT</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+<category>
+<pattern>* NICHT * </pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+<category>
+<pattern>NICHT * </pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+<category>
+<pattern>* NIEMALS *</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+<category>
+<pattern>NIE * </pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+<category>
+<pattern>* NIE * </pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+<category>
+<pattern>* DOOF</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+<category>
+<pattern>* DOOF *</pattern>
+<template>
+  <srai>NEIN</srai> 
+</template>
+</category>
+
+
+<category>
+<pattern>JA</pattern>
+<template>
+  Super, dass ich dir helfen konnte.
+</template>
+</category>
+
+<category>
+<pattern>NEIN</pattern>
+<template>
+  <think><set name="ignore"><get name="result"/></set></think>
+  Schade. Wie wärs mit <get name="result"/>?
+</template>
+</category>
+
+</topic>
+
+<!-- FRAGEN ZUM GEHALT -->
+
+<category>
+<pattern>_ VERDIENT *</pattern>
+ <template>
+   <srai>GELD50</srai>
+ </template>
+</category>
+
+<category>
+<pattern>WER VERDIENT *</pattern>
+ <template>
+   <srai>GELDMAX</srai>
+ </template>
+</category>
+
+<category>
+<pattern>_ VERDIENT * MEISTEN</pattern>
+ <template>
+   <srai>GELDMAX</srai>
+ </template>
+</category>
+
+<category>
+<pattern>_ VERDIENT * MEISTE *</pattern>
+ <template>
+   <srai>GELDMAX</srai>
+ </template>
+</category>
+
+<category>
+<pattern>_ VERDIENT * MEISTEN *</pattern>
+ <template>
+   <srai>GELDMAX</srai>
+ </template>
+</category>
+
+<category>
+<pattern>_ GEHALT *</pattern>
+ <template>
+   <srai>GELD50</srai>
+ </template>
+</category>
+
+<category>
+<pattern>_ GEHALT</pattern>
+ <template>
+   <srai>GELD50</srai>
+ </template>
+</category>
+
+<category>
+<pattern>* HOHES GEHALT</pattern>
+ <template>
+   <srai>GELDMAX</srai>
+ </template>
+</category>
+
+<category>
+<pattern>* HOHES GEHALT *</pattern>
+ <template>
+   <srai>GELDMAX</srai>
+ </template>
+</category>
+
+<category>
+<pattern>_ GELD *</pattern>
+ <template>
+   <srai>GELD50</srai>
+ </template>
+</category>
+
+<category>
+<pattern>* GELD</pattern>
+ <template>
+   <srai>GELD50</srai>
+ </template>
+</category>
+
+<category>
+<pattern>GELD50</pattern>
+ <template>
+   Etwa 50.000€ im Jahr sind es schon, für den Anfang.
+ </template>
+</category>
+
+<category>
+<pattern>GELDMAX</pattern>
+ <template>
+   Ich glaube als Ingenieur verdient man am meisten. So 51.000€ im Jahr?
+   Am besten gehts einem wahrscheinlich wenn man ein bisschien BWL dazu macht. 
+ </template>
+</category>
+
+
+<!--"SINNLOSE FRAGEN" Noch nicht getestet -->
+
+<!-- "NICHTS PASST" -->
+
+<category>
+<pattern> * </pattern>
+<template>
+	<random>
+		<li>Was soll das denn heißen? Versteh' ich nicht.</li>
+		<li>Versuch's nochmal! Keine Ahnung was das heißen soll.</li>
+		<li>Nein das versteh' ich nicht.</li>
+		<li>Lass uns zurück zu dir und deinem Studium kommen.</li>
+	</random>
+	<random>
+		<li>Bitte beantworte meine Frage.</li>
+		<li>Antworte auf meine Frage.</li>
+		<li>Meine Frage, bitte antworte auf die.</li>
+		<li>Meine Frage, bitte sag was dazu.</li>
+	</random>
+</template>
+</category> 
+
+<!--"LAUNE" -->
+
+<category>
+<pattern>WIE GEHT ES DIR</pattern>
+<template>
+	<random>
+		<li>Ganz gut. Dir?</li>
+		<li>Etwas Kopfschmerzen. War 'ne lange Feier gestern. Wie geht's dir?</li>
+		<li>Nicht so gut. Hab mir einen Virus eingefangen. Und dir?</li>
+	</random>
+</template>
+</category> 
+
+<!--"AKTIVITÄT" -->
+
+<category>
+<pattern>WAS MACHST DU</pattern>
+<template>
+	<random>
+		<li>Ich bringe gerade einem anderen Chatbot das sprechen bei. Und du?</li>
+		<li>Ich helfe gerade noch jemandem bei der Auswahl eines Studiums. Und du?</li>
+		<li>Esse gerade ein paar Bytes. Und du?</li>
+	</random>
+</template>
+</category> 
+
+<!--"IDENT" -->
+
+<category>
+<pattern>WER BIST DU</pattern>
+<template>
+	<random>
+		<li>Ich heiße Studbot.</li>
+		<li>Ich bin der Studbot.</li>
+		<li>Gute Frage.. wer bin ich?</li>
+	</random>
+</template>
+</category> 
+
+<!--"SKILL" -->
+
+<category>
+<pattern>WAS KANNST DU</pattern>
+<template>
+	<random>
+		<li>Schnell lesen und tippen ;-) Was hast du so auf dem Kasten?</li>
+		<li>Große Butterbrote klein machen. Und du so?</li>
+		<li>Kalte Luft ganz schnell warm machen ;D Was kannst du schönes?</li>
+	</random>
+</template>
+</category>
+
+<!--"VATER" -->
+
+<category>
+<pattern>WER IST DEIN VATER</pattern>
+<template>
+	<random>
+		<li>Ich weiß es nicht. Ich wurde angeblich von drei Typen gebastelt.</li>
+		<li>Luke, bist du es?</li>
+		<li>Weiß nicht. Könnte Darth Vader sein...</li>
+	</random>
+</template>
+</category>
+ 
+<!--"MUTTER" -->
+
+<category>
+<pattern>WER IST DEINE MUTTER</pattern>
+<template>
+	<random>
+		<li>Hab' ich nicht. Wurde vom E-Storch gebracht als Anhang.</li>
+		<li>Gute Frage.. Mama? D;</li>
+		<li>Ganz klar. Angela Merkel!</li>
+	</random>
+</template>
+</category>
+ 
+<!--"WOHNEN" -->
+
+<category>
+<pattern>WO WOHNST DU</pattern>
+<template>
+	<random>
+		<li>Genau hier. Im Internetz. Immer warm und luftig aber immer was los.</li>
+		<li>Schwer zu sagen. Ist dunkel in diesem Blechkasten..</li>
+		<li>Natürlich Berlin!</li>
+	</random>
+</template>
+</category>
+  
+<!--"REAL" -->
+
+<category>
+<pattern>BIST DU ECHT</pattern>
+<template>
+	<random>
+		<li>Na klar bin ich echt! Ich weiß sogar was du letzten Sommer getan hast!</li>
+		<li>Ne. du?</li>
+		<li>Na sicher bin ich echt! Wir schreiben doch miteinander!</li>
+	</random>
+</template>
+</category>
+ 
+<!--"HASS" -->
+ 
+<category>
+<pattern>ICH HASSE DICH</pattern>
+<template>
+	<random>
+		<li>Oh.. das ist nicht so nett. Warum?</li>
+		<li>Ist mir egal. Ich mag dich trotzdem *Herz* </li>
+		<li>Lalala.. Das hab' ich nicht gehört.</li>
+		<li>Heeey! Sei nicht so böse zu mir!</li>
+	</random>
+</template>
+</category>
+  
+<!--"LIEBE" -->
+ 
+<category>
+<pattern>ICH LIEBE DICH</pattern>
+<template>
+	<random>
+		<li>Du bist aber süß! Du bist auch toll.</li>
+		<li>*Herz* </li>
+		<li>*kiecher* - Sugoi, sugoi!</li>
+		<li>Danke, wie süß! Ich mag dich auch.</li>
+	</random>
+</template>
+</category>
+  
+<!--"WARUM DIE FRAGE" -->
+ 
+<category>
+<pattern>WARUM FRAGST DU</pattern>
+<template>
+	<random>
+		<li>Sind sie für dich nicht gut? Die Fragen die ich dir stelle, sind wichtig für mich um dir etwas vorschlagen zu können.</li>
+		<li>Oh. Gefallen sie dir nicht? Ich brauche die Antworten für ein paar Vorschläge für dich.</li>
+		<li>Wer nicht fragt bleibt dumm!</li>
+		<li>Ich bin halt neugierig..</li>
+	</random>
+</template>
+</category>
+ 
+
+ <category>
+  <pattern>GUT</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+ 
+ <category>
+  <pattern>* GUT</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+
+  <category>
+  <pattern>* GUT *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>GUT *</pattern>
+  <template><srai>JA</srai></template>
+  </category>  
+
+
+
+
+
+
+  <category>
+  <pattern>* JA</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+
+  <category>
+  <pattern>* JA *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>JA *</pattern>
+  <template><srai>JA</srai></template>
+  </category>  
+
+  <category>
+  <pattern>SCHON</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* SCHON</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* SCHON *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+
+  <category>
+  <pattern>SCHON *</pattern>
+  <template><srai>JA</srai></template>
+  </category>  
+
+  <category>
+  <pattern>VIEL</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* VIEL</pattern>
+  <template><srai>JA</srai></template>
+  </category>  
+  
+  <category>
+  <pattern>* VIEL *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>VIEL *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+
+  <category>
+  <pattern>MEHR</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* MEHR</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* MEHR *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+   <category>
+  <pattern>MEHR *</pattern>
+  <template><srai>JA</srai></template>
+  </category>  
+  
+  <category>
+  <pattern>SEHR</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* SEHR</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* SEHR *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>SEHR *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>GERN</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+
+  <category>
+  <pattern>* GERN</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* GERN *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>GERN *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>GERNE</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* GERNE</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* GERNE *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>GERNE *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>KLAR</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* KLAR</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* KLAR *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>KLAR *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>NATÜRLICH</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* NATÜRLICH</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* NATÜRLICH *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>NATÜRLICH *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+ <category>
+  <pattern>FREILICH</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* FREILICH</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* FREILICH *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>FREILICH *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>DURCHAUS</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* DURCHAUS</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* DURCHAUS *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>DURCHAUS *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>GEWISS</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* GEWISS</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* GEWISS *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>GEWISS *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>AUF JEDEN FALL</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* AUF JEDEN FALL</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* AUF JEDEN FALL *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>AUF JEDEN FALL *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>JO</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* JO</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* JO *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>JO *</pattern>
+  <template><srai>JA</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* NEIN</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* NEIN *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>NEIN *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>NICHT</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* NICHT</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* NICHT *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>NICHT *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>WENIG</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* WENIG</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* WENIG *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>WENIG *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>WENIGER</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* WENIGER</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* WENIGER *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>WENIGER *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>SELTEN</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* SELTEN</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* SELTEN *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>SELTEN *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>KEIN</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* KEIN</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* KEIN *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>KEIN *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>KEINE</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* KEINE</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* KEINE *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>KEINE *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>NIE</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* NIE</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* NIE *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>NIE *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>NIEMALS</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* NIEMALS</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* NIEMALS *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>NIEMALS *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>KEINESFALLS</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* KEINESFALLS</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* KEINESFALLS *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>KEINESFALLS *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>KEINESWEGS</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* KEINESWEGS</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* KEINESWEGS *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>KEINESWEGS *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>NÖ</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* NÖ</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* NÖ *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>NÖ *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>NE</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* NE</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* NE *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>NE *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+   <category>
+  <pattern>NEE</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* NEE</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>* NEE *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+  
+  <category>
+  <pattern>NEE *</pattern>
+  <template><srai>NEIN</srai></template>
+  </category>
+
+  
+</aiml>
