@@ -1,0 +1,89 @@
+<html lang="de">
+
+<head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+		<link rel="stylesheet" href="style.css">
+
+		<title>STUDO :: Chat mit dem BOT</title>
+
+<!-- SCRIPT SORGT FÜR AUSGABE DER ZEIT IN DER KOPFZEILE -->
+
+	<script type="text/javascript">
+
+			function updateTime() {
+
+			var date = new Date();
+				var stunden = date.getHours();
+				var minuten = date.getMinutes();
+			var datum = "Es ist schon " + stunden + ":" + minuten;
+
+				document.getElementById('time').innerHTML = datum;
+				setTimeout(updateTime, 60000);
+			}
+
+			window.addEventListener("load", updateTime);
+			
+	</script>
+	
+<!-- SCRIPT SORGT FÜR AUTOMATISCHES SCROLLEN ZUM CHAT-ENDE -->
+<!-- WENN NICHT BENÖTIGT, EINFACH DURCH KOMMENTAR DEAKT.   -->
+	
+	<script type="text/javascript">
+
+				void setInterval(function(){scrollBy(0,500)}, 1);
+	
+	</script>
+
+</head>
+
+<body>
+
+<!-- ***** KOPFZEILE - ZUM VERLASSEN DES CHATS ***** -->
+
+	<div class="zeile">
+            <div class="verlassen"><a href="http://webbucket.de/studo/beendet" border="0" style="text-decoration: none"><b>X</b></a><img src="http://webbucket.de/studo/cg/prof.jpg" draggable="false"/></div>
+            <div class="name">Du chattest mit <b>Studo</b></div>
+            <div class="untertitel"><div id="time"></div></div>
+    </div>
+
+<!-- ***** GESPRÄCH ZW BOT UND USER ***** -->
+		
+    <ol class="chat">
+	
+	
+		<li class="chatbot">
+			<div class="profilbild"><img src="http://webbucket.de/studo/cg/prof.jpg" draggable="false"/></div>
+			<div class="nachricht">
+				<p>Hallo</p>
+				<p>Ich bin Studo! Und wie heißt du so?</p>
+				<p>Lange Wurst. Lange Wurst. Lange Wurst. Lange Wurst. Lange Wurst. Lange Wurst. Lange Wurst. Lange Wurst. Lange Wurst. Lange Wurst. Lange Wurst. Lange Wurst. Lange Wurst. Lange Wurst. Lange Wurst. Lange Wurst. Lange Wurst. Lange Wurst. Lange Wurst. Lange Wurst. Lange Wurst. Lange Wurst. </p>
+			<time>[UHRZEIT]</time>
+			</div>
+		</li>
+	
+		<li class="deruser">
+			<div class="profilbild"><img src="http://webbucket.de/studo/cg/bender.jpg" draggable="false"/></div>
+			<div class="nachricht">
+				<p>Was schreibe ich hier nur???</p>
+			<time>[UHRZEIT]</time>
+			</div>
+		</li>
+	
+    <li class="chatbot">
+        <div class="profilbild"><img src="http://webbucket.de/studo/cg/prof.jpg" draggable="false"/></div>
+      <div class="nachricht">
+        <p>Wie geht's?</p>
+        <time>[UHRZEIT]</time>
+      </div>
+    </li>
+
+    </ol>
+	
+	<!-- ***** TEXTFELD: USER ***** -->
+
+    <input class="dastextfeld" type="text" placeholder="Schreibe hier deinen Text..."/><div class="derknopf"></div>
+	
+	</body>
+</html>
